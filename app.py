@@ -1,15 +1,3 @@
-from flask import Flask, request, jsonify
-from transformers import GPT2LMHeadModel, GPT2Tokenizer
-import torch
-
-app = Flask(__name__)
-
-model = GPT2LMHeadModel.from_pretrained("./GPT2-PrideAndPrejudice")
-tokenizer = GPT2Tokenizer.from_pretrained("./GPT2-PrideAndPrejudice")
-
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model.to(device)
-
 def make_story(base_text, length):
     try:
         # Encoding of input text
